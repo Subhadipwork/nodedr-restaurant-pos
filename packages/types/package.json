@@ -2,7 +2,7 @@
   "name": "@restrovia/types",
   "version": "0.1.0",
   "private": true,
-  "author": "Raktim Ranjit <mail@raktimranjit.com> (https://github.com/Raktim94)",
+  "author": "Restrovia (https://restrovia.shop)",
   "license": "AGPL-3.0-only",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",

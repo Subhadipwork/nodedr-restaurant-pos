@@ -31,14 +31,11 @@ anything here is out of date, trust [`PROJECT.md`](./PROJECT.md) and
 
 This project follows the [Contributor Covenant](./CODE_OF_CONDUCT.md). By
 participating, you agree to uphold it. Report unacceptable behavior to
-**mail@raktimranjit.com**.
+**support@restrovia.shop**.
 
 ## Maintainers & copyright
 
-See [`MAINTAINERS.md`](./MAINTAINERS.md) — Raktim Ranjit is the lead
-maintainer; project copyright is held jointly by
-[Nodedr Infotech Private Limited](https://www.nodedr.com/) and Raktim
-Ranjit. By submitting a PR, you agree your contribution is licensed under
+See [`MAINTAINERS.md`](./MAINTAINERS.md). By submitting a PR, you agree your contribution is licensed under
 the same [AGPL-3.0](./LICENSE) as the rest of the project; you retain
 copyright on your own contribution.
 
@@ -81,7 +78,7 @@ docker exec nodedr-restaurant-backend npx ts-node prisma/seed.ts   # first run o
 Open <http://localhost:1995> and sign in with `owner@demo.local` /
 `Password123!` (seeded demo account — never use this in a real
 deployment). The backend API and Swagger docs (`/api/docs`) are reachable
-only through the web app's `/api` proxy, matching `nodedr-pos`'s pattern —
+only through the web app's `/api` proxy, matching the retail POS's pattern —
 they are not published directly to the host.
 
 ### Option B — local dev (apps run on the host, Postgres in Docker)
@@ -127,7 +124,7 @@ a module, not threading new routes through a shared app — see
 ## Conventions that are not optional
 
 These are documented, previously-learned-the-hard-way rules (some
-inherited from this project's sister repo, `nodedr-pos`, which hit these
+inherited from this project's sister repo, the retail POS, which hit these
 bugs in production). PRs that violate them will be asked to change before
 merge, regardless of otherwise-good code:
 
@@ -194,7 +191,7 @@ Fix loyalty point drift on repeated redemptions
 Running balance was updated with a DB-side increment on a Float column,
 which compounds rounding error over many transactions. Switched to a
 rounded read-modify-write set, matching the rule this project inherited
-from nodedr-pos's original bug.
+from the retail POS's original bug.
 ```
 
 No fixed prefix convention (`feat:`/`fix:`) is enforced yet — clear prose
@@ -246,7 +243,7 @@ PR.
 
 ## Questions & discussion
 
-Use [GitHub Discussions](https://github.com/Raktim94/nodedr-restaurant-pos/discussions)
+Use [our contact page](https://restrovia.shop/contact)
 for "how do I…" / "why does X work this way" / general chat. Use Issues
 for concrete bugs and feature requests. Keep architecture debates in
 Discussions or a tagged issue rather than scattered across PR comments,

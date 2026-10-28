@@ -4,7 +4,7 @@
 
 <img src="docs/restrovia-cover.jpg" alt="Illustrative evening scene in an independent restaurant" width="100%">
 
-**Open-source, self-hosted restaurant POS & management system** — billing
+**Restaurant POS & management system** — billing
 with **UPI QR payments**, tables, kitchen display (KDS), reservations,
 inventory, **staff attendance & payroll**, accounting, reports, CRM/loyalty
 and multi-branch control. Offline-first, runs on your own server, no
@@ -21,9 +21,7 @@ dine-in, takeaway, delivery and kitchen operations.
 [![PRs welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](./CONTRIBUTING.md)
 [![Status](https://img.shields.io/badge/status-active%20development-orange.svg)](./ROADMAP.md)
 
-Developed by [NodeDR Infotech Private Limited](https://www.nodedr.com/)
-
-**[Try Restrovia](https://restrovia.shop/)** · **[Case study](https://www.raktimranjit.com/projects/orderrestro)** · **[Maintainer: Raktim Ranjit](https://www.raktimranjit.com/)**
+**[Try Restrovia](https://restrovia.shop/)**
 
 <p align="center">
   <img src="docs/assets/hero-animated.svg" alt="Restrovia: animated overview with an illustrative sample screen" width="100%">
@@ -53,8 +51,7 @@ server on the restaurant's own LAN: order-taking, billing, KDS, and
 printing all keep working with the WAN cable unplugged. No subscription,
 no forced cloud dependency, self-hosted by design.
 
-It's a sister project to [`nodedr-pos`](https://github.com/Raktim94/nodedr-pos)
-(the retail-shop POS), reusing its proven patterns — auth/session model,
+It reuses proven patterns — auth/session model,
 receipt rendering, ESC/POS printing, currency-rounding discipline — but
 built as its own codebase, because restaurant floor/kitchen/reservation
 operations and retail shop billing are different enough domains that
@@ -171,7 +168,7 @@ costing, suppliers, purchase orders, goods receipts with batch/lot +
 expiry tracking, FIFO waste logging, and automatic ingredient deduction
 on checkout (combo-aware, never blocks a sale on a stock shortfall).
 Also shipped: printable receipts (opens the browser's print dialog, same
-"any printer, or Save as PDF" approach as [`nodedr-pos`](https://github.com/Raktim94/nodedr-pos)),
+"any printer, or Save as PDF" approach as the retail POS),
 a Settings area (restaurant + branch details, per-branch tax regime — India
 GST/US Sales Tax/EU VAT/Spain IVA, tax-inclusive or -exclusive menu
 pricing) and staff account management (create/deactivate staff, assign
@@ -246,8 +243,8 @@ management tools with **56 screenshots of the app**.
 
 ## FAQ
 
-**Is there a free, open-source restaurant POS I can self-host?**
-Yes — Restrovia is AGPL-3.0 and installs with `docker compose up`, or as
+**Can I self-host it?**
+Yes — Restrovia installs with `docker compose up`, or as
 a one-click app on CasaOS / ZimaOS.
 
 **Does it support UPI payments and GST billing?**
@@ -493,17 +490,7 @@ This project follows the [Contributor Covenant](./CODE_OF_CONDUCT.md).
 
 ## License
 
-Copyright © 2026 [Nodedr Infotech Private Limited](https://www.nodedr.com/)
-and Raktim Ranjit. Licensed under the
-[GNU Affero General Public License v3.0](./LICENSE) (AGPL-3.0). In short:
-you're free to self-host, use, and modify this software for your
-restaurant or business. If you modify it and run that modified version
-as a network service for others, you must make your modified source
-available to those users under the same license — this keeps
-improvements to a self-hosted business tool in the open rather than
-disappearing into a closed commercial fork.
-
-See [`MAINTAINERS.md`](./MAINTAINERS.md) for project maintainers.
+See [`LICENSE`](./LICENSE) for the licence terms that apply to this software.
 
 ---
 
@@ -512,15 +499,10 @@ See [`MAINTAINERS.md`](./MAINTAINERS.md) for project maintainers.
 </div>
 
 
-## Case study
-
-Read the [Restrovia case study](https://www.raktimranjit.com/projects/orderrestro) for the product background and design decisions.
-
-Maintainer: [Raktim Ranjit](https://www.raktimranjit.com/)
 
 ---
 
-<sub>Keywords: restaurant POS, open source restaurant management software,
+<sub>Keywords: restaurant POS, restaurant management software,
 self-hosted POS, UPI QR payment POS, GST billing software for restaurants,
 kitchen display system, KDS, restaurant inventory management, restaurant
 payroll and attendance, café POS, cloud kitchen software, QR table ordering,

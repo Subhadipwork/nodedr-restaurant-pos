@@ -287,8 +287,8 @@ Restrovia has a REST API (`/api/v1`, docs at `/api/docs`), API keys, webhooks an
 
 Everything lives in your Postgres volume. Use **Settings → Backup** for scheduled backups, and test a restore before you need one.
 
-Questions or bugs: [open an issue](https://github.com/Raktim94/nodedr-restaurant-pos/issues).
+Questions or bugs: [contact us](https://restrovia.shop/contact).
 
 ---
 
-<sub>Restrovia is developed by [NodeDR Infotech Private Limited](https://www.nodedr.com/) · [nodedr.com](https://www.nodedr.com/)</sub>
+<sub>Restrovia · [restrovia.shop](https://restrovia.shop)</sub>

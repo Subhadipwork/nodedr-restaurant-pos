@@ -479,7 +479,7 @@ export class OrdersController {
   }
 
   // --- Direct-USB thermal printing (ESC/POS) ---------------------------------
-  // Ported from nodedr-pos, which has real hardware to verify against; this
+  // Ported from the retail POS, which has real hardware to verify against; this
   // app's transport/byte-building code is identical in structure (see
   // escpos-usb.ts/escpos-receipt.ts file comments) but has only been
   // structurally verified here (module loads, correct 503 with no printer

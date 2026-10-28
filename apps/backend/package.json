@@ -2,7 +2,7 @@
   "name": "@restrovia/backend",
   "version": "0.0.1",
   "description": "Restrovia API",
-  "author": "Raktim Ranjit <mail@raktimranjit.com> (https://github.com/Raktim94)",
+  "author": "Restrovia (https://restrovia.shop)",
   "private": true,
   "license": "AGPL-3.0-only",
   "scripts": {

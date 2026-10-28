@@ -26,7 +26,7 @@ station chips, (b) realtime now always connects through the web origin (see §6)
 ## 2. Kiosk URL and launch
 
 1. In the staff app: **Settings → Customer kiosk → Enable kiosk**. Copy the address, e.g.
-   `https://orderrestro.nodedrdev.com/kiosk/<32 hex characters>`. The address *is* the
+   `https://restrovia.shop/kiosk/<32 hex characters>`. The address *is* the
    credential: anyone who has it can place orders (and nothing else). **Create new address**
    invalidates the old one immediately; **Turn kiosk off** removes it.
 2. On the kiosk (Android 14, Chrome): open that address → ⋮ menu → **Add to Home screen / Install app**.

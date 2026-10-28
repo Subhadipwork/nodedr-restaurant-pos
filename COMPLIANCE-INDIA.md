@@ -8,7 +8,7 @@ This document explains how Restrovia is built with reference to Indian law, so a
 
 ## Who is the "data fiduciary"?
 
-Restrovia is self-hosted software, not a cloud service Nodedr Infotech operates on your behalf. When a restaurant deploys Restrovia on its own server, **that restaurant is the Data Fiduciary** under the Digital Personal Data Protection Act, 2023 (DPDP Act) for the customer and staff personal data it collects through the app — the same way a restaurant using a paper register or a locally-run spreadsheet would be. Nodedr Infotech does not receive, store, or process that data on its own infrastructure in a self-hosted deployment.
+Restrovia is self-hosted software, not a cloud service Restrovia operates on your behalf. When a restaurant deploys Restrovia on its own server, **that restaurant is the Data Fiduciary** under the Digital Personal Data Protection Act, 2023 (DPDP Act) for the customer and staff personal data it collects through the app — the same way a restaurant using a paper register or a locally-run spreadsheet would be. Restrovia does not receive, store, or process that data on its own infrastructure in a self-hosted deployment.
 
 This has a practical upside: because the entire stack (Postgres, API, and web app) runs on hardware the restaurant controls, data residency and cross-border transfer questions under the DPDP Act are largely avoided by construction — the data simply never leaves the deploying operator's own server unless they choose to move it.
 
@@ -47,4 +47,4 @@ The Central Consumer Protection Authority's 2023 guidelines on misleading advert
 
 ## Questions
 
-For questions about this software's architecture or security posture, [open an issue on GitHub](https://github.com/Raktim94/nodedr-restaurant-pos/issues). For questions about your own restaurant's legal obligations as a Data Fiduciary or GST-registered business, please consult a qualified lawyer or chartered accountant — this document cannot answer those for your specific situation.
+For questions about this software's architecture or security posture, [contact us](https://restrovia.shop/contact). For questions about your own restaurant's legal obligations as a Data Fiduciary or GST-registered business, please consult a qualified lawyer or chartered accountant — this document cannot answer those for your specific situation.

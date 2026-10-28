@@ -1,10 +1,9 @@
 "use client";
 
-import { ArrowRight, Github } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { motion } from "motion/react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { downloadHref } from "@/lib/downloads";
 import { PosMockup } from "@/components/marketing/pos-mockup";
 
 const words = ["Restaurant", "software", "you", "actually", "own."];
@@ -69,10 +68,9 @@ export function Hero() {
             variant="outline"
             size="lg"
             className="h-11 px-6 text-[15px]"
-            render={<a href={downloadHref("github")} />}
+            render={<Link href="/login" />}
           >
-            <Github className="size-4" data-icon="inline-start" />
-            View on GitHub
+            Sign in
           </Button>
         </motion.div>
       </div>

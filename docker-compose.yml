@@ -68,14 +68,14 @@ services:
       postgres:
         condition: service_healthy
     # Not published to the host — reachable only via the web service's
-    # server-side /api proxy, same reasoning as nodedr-pos (keeps the API
+    # server-side /api proxy, same reasoning as the retail POS (keeps the API
     # off the LAN, shrinks attack surface).
     expose:
       - "4000"
     volumes:
       - uploads_data:/data/uploads
       # Direct-USB thermal printing (see apps/backend/src/modules/orders/
-      # escpos-usb.ts, ported from nodedr-pos's real hardware-verified
+      # escpos-usb.ts, ported from the retail POS's real hardware-verified
       # transport) needs the backend to see the host's USB device nodes.
       # Bind-mounting the whole /dev/bus/usb tree (not `devices:` with a
       # literal path, which only handles nodes that exist at container

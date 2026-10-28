@@ -109,14 +109,14 @@ GET  /locations/:branchId/reservations/:id   (scope: reservations:read)`}</Code>
 
       <DocSection heading="Full reference">
         <p>
-          For the complete endpoint reference, error codes, and rate limits, see{" "}
+          For the complete endpoint reference, error codes, and rate limits, contact us at{" "}
           <a
-            href="https://github.com/Raktim94/nodedr-restaurant-pos/blob/main/docs/integrations-api.md"
+            href="https://restrovia.shop/contact"
             className="text-primary underline underline-offset-4"
           >
-            docs/integrations-api.md
-          </a>{" "}
-          in the repository.
+            restrovia.shop/contact
+          </a>
+          .
         </p>
       </DocSection>
     </DocPage>

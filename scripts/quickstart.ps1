@@ -4,7 +4,7 @@
 # different things: the CLI alone can't run a container without a Docker
 # Engine somewhere to talk to. Instead of Docker Desktop, this script uses
 # WSL2 — Windows' own free, built-in Linux subsystem — to run a real,
-# open-source Docker Engine + Docker CLI (installed the exact same way this
+# Docker Engine + Docker CLI (installed the exact same way this
 # project's Linux quickstart.sh already installs it), then runs that same
 # quickstart.sh inside WSL2 to install and start Restrovia. It also
 # installs the native Windows Docker CLI (winget: Docker.DockerCLI) so

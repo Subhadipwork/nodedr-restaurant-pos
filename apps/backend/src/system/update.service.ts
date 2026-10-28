@@ -78,7 +78,7 @@ export class UpdateService {
   }
 
   // Hands the update to the `updater` sidecar container (updater/server.js),
-  // same design as nodedr-pos. A container can't safely replace itself, and
+  // same design as the retail POS. A container can't safely replace itself, and
   // giving this API the Docker socket would be far more privilege than a POS
   // backend should hold — the sidecar is reachable only on the internal
   // Docker network, only with UPDATER_TOKEN, and only ever swaps the image

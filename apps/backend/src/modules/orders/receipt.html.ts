@@ -1,4 +1,4 @@
-// Self-printing HTML receipt — ported from nodedr-pos's
+// Self-printing HTML receipt — ported from the retail POS's
 // backend/src/lib/receipt.js (same 80mm-thermal-safe layout rules: @page
 // margin 0, left-aligned body, box-sizing border-box so 80mm stays 80mm
 // after padding). Loaded into a hidden iframe by the frontend

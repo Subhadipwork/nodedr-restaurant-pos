@@ -19,7 +19,7 @@ name: Publish Docker images
 # are ARM SBCs, and declaring `architectures: [amd64, arm64]` in the
 # x-casaos manifest without actually publishing an arm64 image would install
 # a broken app on that hardware. Pushed to GHCR (same registry as sibling
-# project nodedr-pos) using the automatic `secrets.GITHUB_TOKEN` — no
+# project the retail POS) using the automatic `secrets.GITHUB_TOKEN` — no
 # manually-created registry credential needed.
 
 # A push to master publishes only :edge and :sha-<commit>, so unreleased code can never replace the image a

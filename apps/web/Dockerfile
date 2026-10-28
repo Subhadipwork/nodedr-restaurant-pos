@@ -22,7 +22,7 @@ RUN pnpm install --frozen-lockfile
 # --- builder ---
 # BACKEND_URL is a build ARG, not a runtime env — Next.js bakes rewrite
 # destinations into the routes manifest at build time (see next.config.ts
-# and ARCHITECTURE.md's "reused from nodedr-pos" section for why a runtime
+# and ARCHITECTURE.md's "reused from" section for why a runtime
 # env silently falls back to the default instead).
 FROM deps AS builder
 ARG BACKEND_URL=http://backend:4000
