@@ -1,6 +1,7 @@
 "use client";
 
 import { MotionConfig } from "motion/react";
+import "./landing.css";
 import { AuthRedirectGate } from "@/components/marketing/auth-redirect-gate";
 import { ClaimedLanding } from "@/components/marketing/claimed-landing";
 import { Features } from "@/components/marketing/features";
@@ -26,7 +27,7 @@ export default function MarketingHomePage() {
   // page. Show only what a returning visitor actually needs.
   if (data?.isSetup) {
     return (
-      <div className="flex min-h-full flex-col">
+      <div className="lp flex min-h-full flex-col">
         <AuthRedirectGate />
         <ClaimedLanding />
       </div>
@@ -39,7 +40,7 @@ export default function MarketingHomePage() {
     // swap for instant/opacity-only changes) instead of threading
     // useReducedMotion() through every component individually.
     <MotionConfig reducedMotion="user">
-      <div className="flex min-h-full flex-col">
+      <div className="lp flex min-h-full flex-col">
         <AuthRedirectGate />
         <MarketingNav />
         <main id="main-content">

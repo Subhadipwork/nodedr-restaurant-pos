@@ -31,36 +31,33 @@ const groups = [
 
 export function Features() {
   return (
-    <section id="features" className="mx-auto max-w-6xl px-4 py-24 sm:px-6 sm:py-32">
-      <Reveal className="max-w-2xl">
-        <h2 className="text-3xl font-semibold tracking-[-0.025em] text-foreground sm:text-5xl">
-          Built for the dining room and the pass
-        </h2>
-        <p className="mt-5 max-w-lg text-lg leading-relaxed text-muted-foreground">
-          Made for sit-down, takeaway and kitchen service from the start, not a shop till adapted for restaurants.
-        </p>
-      </Reveal>
+    <section id="features" className="lp-section">
+      <div className="lp-wrap">
+        <Reveal className="lp-section__head">
+          <h2>Built for the dining room and the pass</h2>
+          <p className="lp-lead">
+            Made for sit-down, takeaway and kitchen service from the start, not a shop till adapted for restaurants.
+          </p>
+        </Reveal>
 
-      <div className="mt-16 border-t border-border">
-        {groups.map((g) => (
-          <Reveal
-            key={g.title}
-            className="grid gap-8 border-b border-border py-12 lg:grid-cols-[minmax(0,4fr)_minmax(0,8fr)] lg:gap-16"
-          >
-            <div>
-              <h3 className="text-xl font-semibold tracking-tight text-foreground">{g.title}</h3>
-              <p className="mt-2 max-w-xs text-sm leading-relaxed text-muted-foreground">{g.blurb}</p>
-            </div>
-            <dl className="grid gap-x-10 gap-y-8 sm:grid-cols-2">
-              {g.items.map(([name, text]) => (
-                <div key={name}>
-                  <dt className="font-medium text-foreground">{name}</dt>
-                  <dd className="mt-1.5 text-sm leading-relaxed text-muted-foreground">{text}</dd>
-                </div>
-              ))}
-            </dl>
-          </Reveal>
-        ))}
+        <div className="lp-menu">
+          {groups.map((g) => (
+            <Reveal key={g.title} className="lp-course">
+              <div className="lp-course__head">
+                <h3>{g.title}</h3>
+                <p className="lp-note">{g.blurb}</p>
+              </div>
+              <dl className="lp-dishes">
+                {g.items.map(([name, text]) => (
+                  <div key={name} className="lp-dish">
+                    <dt>{name}</dt>
+                    <dd>{text}</dd>
+                  </div>
+                ))}
+              </dl>
+            </Reveal>
+          ))}
+        </div>
       </div>
     </section>
   );

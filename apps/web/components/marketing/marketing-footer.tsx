@@ -29,33 +29,24 @@ const columns = [
 
 export function MarketingFooter() {
   return (
-    <footer className="border-t border-border/60 px-4 py-14 sm:px-6">
-      <div className="mx-auto max-w-6xl">
-        <div className="grid gap-10 sm:grid-cols-[1.5fr_repeat(3,1fr)]">
-          <div>
-            <Link href="/" className="flex items-center gap-2.5">
+    <footer className="lp-footer">
+      <div className="lp-wrap">
+        <div className="lp-footer__grid">
+          <div className="lp-footer__brand">
+            <Link href="/" className="lp-brand">
               <Logo size={28} />
-              <span className="text-sm font-semibold text-foreground">Restrovia</span>
+              Restrovia
             </Link>
-            <p className="mt-3 max-w-xs text-sm text-muted-foreground">
-              Offline-first restaurant management in the cloud.
-            </p>
+            <p className="lp-note">Offline-first restaurant management in the cloud.</p>
           </div>
 
           {columns.map((col) => (
             <div key={col.title}>
-              <h3 className="text-xs font-semibold tracking-wide text-muted-foreground uppercase">
-                {col.title}
-              </h3>
-              <ul className="mt-3 flex flex-col gap-2.5">
+              <h3>{col.title}</h3>
+              <ul>
                 {col.links.map((l) => (
                   <li key={l.label}>
-                    <a
-                      href={l.href}
-                      className="text-sm text-muted-foreground transition-colors hover:text-foreground"
-                    >
-                      {l.label}
-                    </a>
+                    <a href={l.href}>{l.label}</a>
                   </li>
                 ))}
               </ul>
@@ -63,11 +54,9 @@ export function MarketingFooter() {
           ))}
         </div>
 
-        <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-border/60 pt-6 sm:flex-row">
-          <p className="text-xs text-muted-foreground">
-            &copy; {new Date().getFullYear()} Restrovia. All rights reserved.
-          </p>
-          <p className="text-xs text-muted-foreground">Made in India.</p>
+        <div className="lp-footer__base">
+          <p className="lp-note">&copy; {new Date().getFullYear()} Restrovia. All rights reserved.</p>
+          <p className="lp-note">Made in India.</p>
         </div>
       </div>
     </footer>

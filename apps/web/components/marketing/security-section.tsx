@@ -10,31 +10,25 @@ const points = [
 
 export function SecuritySection() {
   return (
-    <section id="security" className="bg-[#111827] px-4 py-24 text-white sm:px-6 sm:py-32">
-      <div className="mx-auto grid max-w-6xl gap-14 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-20">
+    <section id="security" className="lp-section lp-band">
+      <div className="lp-wrap lp-band__grid">
         <Reveal>
-          <h2 className="max-w-md text-3xl font-semibold tracking-[-0.025em] sm:text-5xl">
-            Careful with your money and your guests&rsquo; details
-          </h2>
-          <p className="mt-5 max-w-sm text-lg leading-relaxed text-white/65">
+          <h2>Careful with your money and your guests&rsquo; details</h2>
+          <p className="lp-lead" style={{ marginTop: 24 }}>
             Each module was audited before launch. The details are below, and the full notes are one click away.
           </p>
-          <div className="mt-8 flex flex-col gap-2 text-sm">
-            <Link href="/docs/accessibility" className="w-fit font-medium text-[#FBBF24] underline underline-offset-4">
-              Accessibility statement
-            </Link>
-            <Link href="/docs/compliance-india" className="w-fit font-medium text-[#FBBF24] underline underline-offset-4">
-              India compliance notes
-            </Link>
+          <div className="lp-band__links">
+            <Link href="/docs/accessibility">Accessibility statement</Link>
+            <Link href="/docs/compliance-india">India compliance notes</Link>
           </div>
         </Reveal>
 
-        <Reveal delay={0.1}>
-          <dl className="divide-y divide-white/15 border-y border-white/15">
+        <Reveal>
+          <dl className="lp-points">
             {points.map(([name, text]) => (
-              <div key={name} className="py-6">
-                <dt className="text-lg font-medium">{name}</dt>
-                <dd className="mt-2 max-w-xl leading-relaxed text-white/65">{text}</dd>
+              <div key={name} className="lp-point">
+                <dt>{name}</dt>
+                <dd>{text}</dd>
               </div>
             ))}
           </dl>
