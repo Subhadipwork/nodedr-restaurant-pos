@@ -1,81 +1,43 @@
-import { FileCheck2, Lock, ScanEye, ServerCog } from "lucide-react";
 import Link from "next/link";
-import { Reveal, RevealGroup, RevealItem } from "@/components/marketing/reveal";
+import { Reveal } from "@/components/marketing/reveal";
 
 const points = [
-  {
-    icon: Lock,
-    title: "Hardened by default",
-    description:
-      "bcrypt password hashing, rate-limited login/PIN, httpOnly session cookies, and strict tenant isolation on every query.",
-  },
-  {
-    icon: ServerCog,
-    title: "Server-authoritative money",
-    description:
-      "Prices, tax, discounts, and totals are always recomputed server-side — checkout and refunds are race-condition safe under concurrent requests.",
-  },
-  {
-    icon: ScanEye,
-    title: "Your data stays yours",
-    description:
-      "Each restaurant's data is isolated from every other restaurant's, and is never sold or shared. See the privacy policy for hosting and sub-processor details.",
-  },
-  {
-    icon: FileCheck2,
-    title: "Documented compliance posture",
-    description:
-      "Written accessibility and India data-protection notes — not a marketing claim, an actual document you can read.",
-  },
+  ["Locked down by default", "Passwords are hashed with bcrypt, login and PIN attempts are rate-limited, sessions use httpOnly cookies, and every query is scoped to your restaurant."],
+  ["The server owns the money", "Prices, tax, discounts and totals are always recalculated on the server. Checkout and refunds stay correct when several people act at once."],
+  ["Your data stays yours", "Each restaurant's data is kept apart from every other's, and is never sold or shared. The privacy policy lists hosting and sub-processors."],
+  ["Compliance you can read", "Written notes on accessibility and on India's data-protection law, as documents rather than badges."],
 ];
 
 export function SecuritySection() {
   return (
-    <section id="security" className="border-y border-border/60 bg-muted/30 px-4 py-24 sm:px-6">
-      <div className="mx-auto max-w-6xl">
-        <Reveal className="mx-auto max-w-2xl text-center">
-          <h2 className="text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
-            Security isn&rsquo;t a checkbox here
+    <section id="security" className="bg-[#111827] px-4 py-24 text-white sm:px-6 sm:py-32">
+      <div className="mx-auto grid max-w-6xl gap-14 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-20">
+        <Reveal>
+          <h2 className="max-w-md text-3xl font-semibold tracking-[-0.025em] sm:text-5xl">
+            Careful with your money and your guests&rsquo; details
           </h2>
-          <p className="mt-4 text-lg text-muted-foreground">
-            Every module went through a real audit pass before this page did.
-            Read the details, don&rsquo;t just take our word for it.
+          <p className="mt-5 max-w-sm text-lg leading-relaxed text-white/65">
+            Each module was audited before launch. The details are below, and the full notes are one click away.
           </p>
+          <div className="mt-8 flex flex-col gap-2 text-sm">
+            <Link href="/docs/accessibility" className="w-fit font-medium text-[#FBBF24] underline underline-offset-4">
+              Accessibility statement
+            </Link>
+            <Link href="/docs/compliance-india" className="w-fit font-medium text-[#FBBF24] underline underline-offset-4">
+              India compliance notes
+            </Link>
+          </div>
         </Reveal>
 
-        <RevealGroup className="mt-14 grid gap-5 sm:grid-cols-2">
-          {points.map((p) => (
-            <RevealItem
-              key={p.title}
-              className="flex gap-4 rounded-2xl border border-border/60 bg-card p-6"
-            >
-              <div className="flex size-10 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary">
-                <p.icon className="size-5" />
+        <Reveal delay={0.1}>
+          <dl className="divide-y divide-white/15 border-y border-white/15">
+            {points.map(([name, text]) => (
+              <div key={name} className="py-6">
+                <dt className="text-lg font-medium">{name}</dt>
+                <dd className="mt-2 max-w-xl leading-relaxed text-white/65">{text}</dd>
               </div>
-              <div>
-                <h3 className="text-[15px] font-semibold text-foreground">{p.title}</h3>
-                <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">
-                  {p.description}
-                </p>
-              </div>
-            </RevealItem>
-          ))}
-        </RevealGroup>
-
-        <Reveal delay={0.1} className="mt-10 flex flex-wrap justify-center gap-3">
-          <Link
-            href="/docs/accessibility"
-            className="text-sm font-medium text-primary underline underline-offset-4"
-          >
-            Read the accessibility statement
-          </Link>
-          <span className="text-sm text-muted-foreground">·</span>
-          <Link
-            href="/docs/compliance-india"
-            className="text-sm font-medium text-primary underline underline-offset-4"
-          >
-            Read the India compliance notes
-          </Link>
+            ))}
+          </dl>
         </Reveal>
       </div>
     </section>

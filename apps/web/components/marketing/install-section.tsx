@@ -1,31 +1,32 @@
+import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 import { Reveal } from "@/components/marketing/reveal";
 
 export function InstallSection() {
   return (
-    <section id="get-started" className="mx-auto max-w-6xl px-4 py-24 sm:px-6">
-      <Reveal className="mx-auto max-w-2xl text-center">
-        <h2 className="text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
-          Start running your restaurant on Restrovia
+    <section id="get-started" className="px-4 py-20 sm:px-6 sm:py-28">
+      <Reveal className="mx-auto max-w-6xl rounded-3xl bg-primary px-8 py-16 text-primary-foreground sm:px-16 sm:py-20">
+        <h2 className="max-w-xl text-3xl font-semibold tracking-[-0.025em] sm:text-5xl">
+          Set up your menu, tables and staff today
         </h2>
-        <p className="mt-4 text-lg text-muted-foreground">
-          Create your account and set up your menu, tables and staff in minutes. Nothing to install or host yourself.
+        <p className="mt-5 max-w-md text-lg leading-relaxed text-primary-foreground/80">
+          Create an account and start taking orders. There is nothing to install or host.
         </p>
-      </Reveal>
-
-      <Reveal delay={0.1} className="mt-8 flex flex-wrap justify-center gap-3">
-        <Link
-          href="/signup"
-          className="inline-flex h-11 items-center rounded-xl bg-primary px-6 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90"
-        >
-          Create your account
-        </Link>
-        <Link
-          href="/login"
-          className="inline-flex h-11 items-center rounded-xl border border-border/60 bg-background px-6 text-sm font-medium text-foreground transition-colors hover:border-primary/40"
-        >
-          Sign in
-        </Link>
+        <div className="mt-9 flex flex-wrap gap-3">
+          <Link
+            href="/signup"
+            className="inline-flex h-12 items-center gap-2 rounded-xl bg-white px-6 text-[15px] font-medium text-primary transition-opacity hover:opacity-90"
+          >
+            Create your account
+            <ArrowRight className="size-4" />
+          </Link>
+          <Link
+            href="/login"
+            className="inline-flex h-12 items-center rounded-xl border border-white/40 px-6 text-[15px] font-medium text-white transition-colors hover:bg-white/10"
+          >
+            Sign in
+          </Link>
+        </div>
       </Reveal>
     </section>
   );

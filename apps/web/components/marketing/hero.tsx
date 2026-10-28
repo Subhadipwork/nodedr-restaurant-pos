@@ -1,82 +1,90 @@
 "use client";
 
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, WifiOff } from "lucide-react";
 import { motion } from "motion/react";
+import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { PosMockup } from "@/components/marketing/pos-mockup";
 
-const words = ["Restaurant", "software", "you", "actually", "own."];
+const ticketLines = [
+  { qty: 2, name: "Masala dosa" },
+  { qty: 1, name: "Filter coffee" },
+  { qty: 1, name: "Paneer tikka" },
+];
 
 export function Hero() {
   return (
-    <section className="relative overflow-hidden px-4 pt-20 pb-24 sm:px-6 sm:pt-28">
-      {/* Ambient gradient glow — transform/opacity only, no layout cost */}
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-[560px] bg-[radial-gradient(60%_50%_at_50%_0%,color-mix(in_oklch,var(--primary),transparent_88%),transparent)]"
-      />
-
-      <div className="mx-auto flex max-w-4xl flex-col items-center text-center">
-        <motion.div
-          initial={{ opacity: 0, y: -8 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.3 }}
-          className="mb-6 inline-flex items-center gap-2 rounded-full border border-border/60 bg-muted/50 px-3 py-1 text-xs font-medium text-muted-foreground"
-        >
-          <span className="size-1.5 rounded-full bg-success" />
-          Cloud restaurant management · offline-ready
-        </motion.div>
-
-        <h1 className="flex flex-wrap justify-center gap-x-3 text-4xl font-semibold tracking-tight text-foreground sm:text-6xl">
-          {words.map((word, i) => (
-            <motion.span
-              key={word}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.4, delay: i * 0.06, ease: [0.22, 1, 0.36, 1] }}
-              className={word === "own." ? "text-primary" : undefined}
+    <section className="relative overflow-hidden px-4 pt-16 pb-20 sm:px-6 sm:pt-24 sm:pb-28">
+      <div className="mx-auto grid max-w-6xl items-center gap-14 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)]">
+        <div>
+          <h1 className="max-w-[14ch] text-5xl leading-[1.02] font-semibold tracking-[-0.035em] text-foreground sm:text-7xl">
+            Your whole restaurant, one screen.
+          </h1>
+          <p className="mt-6 max-w-md text-lg leading-relaxed text-muted-foreground">
+            Take orders, send them to the kitchen, split the bill and track
+            stock. When the internet drops, service carries on and catches up
+            by itself.
+          </p>
+          <div className="mt-9 flex flex-wrap items-center gap-3">
+            <Button size="lg" className="h-12 px-6 text-[15px]" render={<Link href="/signup" />}>
+              Create your account
+              <ArrowRight className="size-4" data-icon="inline-end" />
+            </Button>
+            <Button
+              variant="ghost"
+              size="lg"
+              className="h-12 px-5 text-[15px]"
+              render={<Link href="/login" />}
             >
-              {word}
-            </motion.span>
-          ))}
-        </h1>
+              Sign in
+            </Button>
+          </div>
+        </div>
 
-        <motion.p
-          initial={{ opacity: 0, y: 14 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.4, delay: 0.35, ease: [0.22, 1, 0.36, 1] }}
-          className="mt-6 max-w-2xl text-balance text-lg text-muted-foreground sm:text-xl"
-        >
-          POS, kitchen display, tables, reservations, inventory, and CRM — one
-          platform for your whole restaurant. Keep taking orders and
-          printing bills even when the internet drops. Your orders, your
-          customers&rsquo; data, one login.
-        </motion.p>
+        <div className="relative lg:-mr-24">
+          <div className="overflow-hidden rounded-2xl border border-border bg-card shadow-[0_30px_80px_-30px_rgba(159,18,57,0.35)]">
+            <div className="relative aspect-[1440/900] w-full">
+              <Image
+                src="/screenshots/pos-light.png"
+                alt="Restrovia POS screen with a table's open order"
+                fill
+                sizes="(min-width: 1024px) 700px, 100vw"
+                className="object-cover object-top-left"
+                priority
+              />
+            </div>
+          </div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 14 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.4, delay: 0.48, ease: [0.22, 1, 0.36, 1] }}
-          className="mt-9 flex flex-col items-center gap-3 sm:flex-row"
-        >
-          <Button size="lg" className="h-11 px-6 text-[15px]" render={<Link href="/signup" />}>
-            Get started free
-            <ArrowRight className="size-4" data-icon="inline-end" />
-          </Button>
-          <Button
-            variant="outline"
-            size="lg"
-            className="h-11 px-6 text-[15px]"
-            render={<Link href="/login" />}
+          {/* The one moment on the page: a kitchen ticket dropping onto the rail. */}
+          <motion.aside
+            aria-label="Example kitchen ticket"
+            initial={{ opacity: 0, y: -28, rotate: -3 }}
+            animate={{ opacity: 1, y: 0, rotate: -2 }}
+            transition={{ duration: 0.6, delay: 0.5, ease: [0.22, 1, 0.36, 1] }}
+            className="absolute -bottom-8 left-3 w-56 bg-white px-4 pt-3 pb-5 font-mono text-[12px] text-neutral-800 shadow-[0_18px_40px_-14px_rgba(17,24,39,0.45)] sm:left-[-2.5rem]"
+            style={{
+              clipPath:
+                "polygon(0 0,100% 0,100% 96%,95% 100%,90% 96%,85% 100%,80% 96%,75% 100%,70% 96%,65% 100%,60% 96%,55% 100%,50% 96%,45% 100%,40% 96%,35% 100%,30% 96%,25% 100%,20% 96%,15% 100%,10% 96%,5% 100%,0 96%)",
+            }}
           >
-            Sign in
-          </Button>
-        </motion.div>
-      </div>
-
-      <div className="mt-16 sm:mt-20">
-        <PosMockup />
+            <div className="flex items-baseline justify-between border-b border-dashed border-neutral-300 pb-2">
+              <span className="text-sm font-semibold">Table 6</span>
+              <span className="text-neutral-500">Kitchen</span>
+            </div>
+            <ul className="mt-2 space-y-1">
+              {ticketLines.map((l) => (
+                <li key={l.name} className="flex gap-3">
+                  <span className="w-4 text-right">{l.qty}</span>
+                  <span>{l.name}</span>
+                </li>
+              ))}
+            </ul>
+            <p className="mt-3 flex items-center gap-1.5 border-t border-dashed border-neutral-300 pt-2 text-[11px] text-amber-700">
+              <WifiOff className="size-3" aria-hidden />
+              Offline. Syncs when back.
+            </p>
+          </motion.aside>
+        </div>
       </div>
     </section>
   );

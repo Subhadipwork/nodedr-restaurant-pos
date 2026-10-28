@@ -1,102 +1,67 @@
-import {
-  ChefHat,
-  GitBranch,
-  Gift,
-  Package,
-  Plug,
-  QrCode,
-  ShieldCheck,
-  UtensilsCrossed,
-  WifiOff,
-} from "lucide-react";
-import { Reveal, RevealGroup, RevealItem } from "@/components/marketing/reveal";
+import { Reveal } from "@/components/marketing/reveal";
 
-const features = [
+const groups = [
   {
-    icon: UtensilsCrossed,
-    title: "Dine-in POS & billing",
-    description:
-      "Modifiers, combos, split & merge bills, tips, gift cards, multi-payment checkout, and tax-inclusive GST pricing done right.",
+    title: "Front of house",
+    blurb: "Everything the floor needs to take an order and get paid.",
+    items: [
+      ["Billing", "Modifiers, combos, split and merge bills, tips, gift cards and several payments on one bill. GST is calculated on tax-inclusive prices."],
+      ["Tables and reservations", "A floor plan you can drag around, bookings with a waitlist, table transfers, and a QR code on each table that opens the menu."],
+      ["Guests and loyalty", "Customer profiles, points that earn and redeem, gift cards and each guest's visit history."],
+    ],
   },
   {
-    icon: ChefHat,
-    title: "Live Kitchen Display",
-    description:
-      "KOTs auto-routed to the right kitchen station, reprint & priority controls, and per-station prep-time reporting.",
+    title: "Kitchen",
+    blurb: "Tickets reach the right station without anyone shouting.",
+    items: [
+      ["Kitchen display", "Orders route to the right station. Reprint a ticket, bump its priority, and see prep time per station."],
+      ["Stock and purchasing", "Ingredients with recipe costing, purchase orders, goods received by batch, and waste logged first-in, first-out."],
+    ],
   },
   {
-    icon: QrCode,
-    title: "Tables & reservations",
-    description:
-      "Visual floor plan, booking with waitlist, table transfer, and per-table QR codes for a read-only public menu.",
-  },
-  {
-    icon: Package,
-    title: "Inventory & procurement",
-    description:
-      "Ingredients, weighted-average recipe costing, purchase orders, goods receipt with batch/lot tracking, and FIFO waste logging.",
-  },
-  {
-    icon: Gift,
-    title: "CRM, loyalty & gift cards",
-    description:
-      "Customer profiles, earn-and-redeem loyalty points, gift card issuance, and full visit history.",
-  },
-  {
-    icon: WifiOff,
-    title: "Offline-first by design",
-    description:
-      "The whole stack runs on one local server. Order-taking, billing, KDS, and printing keep working with the WAN cable unplugged.",
-  },
-  {
-    icon: ShieldCheck,
-    title: "RBAC on every action",
-    description:
-      "Granular, individually toggleable permissions and strict multi-tenant isolation — never a hardcoded role check.",
-  },
-  {
-    icon: GitBranch,
-    title: "Works offline, syncs when back",
-    description:
-      "Orders, billing, kitchen tickets and printing keep working through an internet outage, and catch up automatically once you are back online.",
-  },
-  {
-    icon: Plug,
-    title: "API & MCP integrations",
-    description:
-      "Connect an MCP client like Claude Desktop with your own permissions, or issue a scoped API key so your website can browse the menu, place orders, and book tables through Restrovia directly.",
+    title: "Running the business",
+    blurb: "Control who can do what, and keep working when the line goes down.",
+    items: [
+      ["Works offline", "Orders, bills, kitchen tickets and printing keep going through an outage and sync automatically afterwards."],
+      ["Staff permissions", "Switch each permission on or off per person. Every restaurant's data is kept apart from every other's."],
+      ["API and MCP", "Let your own website browse the menu, take orders and book tables with a scoped API key, or connect Claude Desktop with your own permissions."],
+    ],
   },
 ];
 
 export function Features() {
   return (
-    <section id="features" className="mx-auto max-w-6xl px-4 py-24 sm:px-6">
-      <Reveal className="mx-auto max-w-2xl text-center">
-        <h2 className="text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
-          Everything a real dine-in operation needs
+    <section id="features" className="mx-auto max-w-6xl px-4 py-24 sm:px-6 sm:py-32">
+      <Reveal className="max-w-2xl">
+        <h2 className="text-3xl font-semibold tracking-[-0.025em] text-foreground sm:text-5xl">
+          Built for the dining room and the pass
         </h2>
-        <p className="mt-4 text-lg text-muted-foreground">
-          Not a retail POS bolted onto a restaurant — purpose-built for
-          dine-in, takeaway, and kitchen operations from day one.
+        <p className="mt-5 max-w-lg text-lg leading-relaxed text-muted-foreground">
+          Made for sit-down, takeaway and kitchen service from the start, not a shop till adapted for restaurants.
         </p>
       </Reveal>
 
-      <RevealGroup className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-        {features.map((f) => (
-          <RevealItem
-            key={f.title}
-            className="group rounded-2xl border border-border/60 bg-card p-6 transition-colors hover:border-primary/40"
+      <div className="mt-16 border-t border-border">
+        {groups.map((g) => (
+          <Reveal
+            key={g.title}
+            className="grid gap-8 border-b border-border py-12 lg:grid-cols-[minmax(0,4fr)_minmax(0,8fr)] lg:gap-16"
           >
-            <div className="inline-flex size-10 items-center justify-center rounded-xl bg-primary/10 text-primary transition-transform duration-200 group-hover:scale-110">
-              <f.icon className="size-5" />
+            <div>
+              <h3 className="text-xl font-semibold tracking-tight text-foreground">{g.title}</h3>
+              <p className="mt-2 max-w-xs text-sm leading-relaxed text-muted-foreground">{g.blurb}</p>
             </div>
-            <h3 className="mt-4 text-[15px] font-semibold text-foreground">{f.title}</h3>
-            <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-              {f.description}
-            </p>
-          </RevealItem>
+            <dl className="grid gap-x-10 gap-y-8 sm:grid-cols-2">
+              {g.items.map(([name, text]) => (
+                <div key={name}>
+                  <dt className="font-medium text-foreground">{name}</dt>
+                  <dd className="mt-1.5 text-sm leading-relaxed text-muted-foreground">{text}</dd>
+                </div>
+              ))}
+            </dl>
+          </Reveal>
         ))}
-      </RevealGroup>
+      </div>
     </section>
   );
 }

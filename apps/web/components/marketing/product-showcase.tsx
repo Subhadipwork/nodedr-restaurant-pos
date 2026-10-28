@@ -21,17 +21,17 @@ export function ProductShowcase() {
   const current = views.find((v) => v.id === active)!;
 
   return (
-    <section className="mx-auto max-w-6xl px-4 py-24 sm:px-6">
-      <Reveal className="mx-auto max-w-2xl text-center">
-        <h2 className="text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
-          See it in action
+    <section className="mx-auto max-w-6xl px-4 py-8 sm:px-6 sm:py-16">
+      <Reveal className="max-w-2xl">
+        <h2 className="text-3xl font-semibold tracking-[-0.025em] text-foreground sm:text-5xl">
+          The real screens
         </h2>
         <p className="mt-4 text-lg text-muted-foreground">
-          The actual app — no staged demo data, no Photoshop.
+          Screenshots of the app itself, one tab per job.
         </p>
       </Reveal>
 
-      <Reveal delay={0.1} className="mt-8 flex justify-center">
+      <Reveal delay={0.1} className="mt-8 flex">
         <div
           role="tablist"
           aria-label="Product views"
