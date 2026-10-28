@@ -137,7 +137,7 @@ x-casaos:
     - amd64
     - arm64
   main: web
-  author: Nodedr Infotech Private Limited
+  author: Restrovia
   developer: Raktim94
   category: Finance
   icon: https://cdn.jsdelivr.net/gh/Raktim94/nodedr-restaurant-pos@master/casaos/icon.png

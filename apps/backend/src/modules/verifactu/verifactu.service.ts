@@ -76,7 +76,7 @@ export class VerifactuService {
     const get = (k: string, d: string) =>
       (this.config.get<string>(k) ?? '').trim() || d;
     return {
-      name: get('VERIFACTU_PRODUCER_NAME', 'NODEDR INFOTECH PRIVATE LIMITED'),
+      name: get('VERIFACTU_PRODUCER_NAME', 'RESTROVIA'),
       country: get('VERIFACTU_PRODUCER_COUNTRY', 'IN'),
       idType: get('VERIFACTU_PRODUCER_ID_TYPE', '04'),
       id: get('VERIFACTU_PRODUCER_ID', ''),
