@@ -43,7 +43,7 @@ the page, use the device's own tools: Android **screen pinning**, a kiosk browse
 Kiosk Browser) or an MDM / device-owner policy pointing at the kiosk address, and disable the
 status/navigation bars there. To keep the screen on permanently use the device's display
 timeout / MDM "stay awake while plugged in" setting. As a courtesy the page requests a standard
-Screen Wake Lock after the first touch of "Toca la pantalla para empezar" and also asks the
+Screen Wake Lock after the first touch of "Touch the screen to start" and also asks the
 browser for full-screen on that tap; both are best-effort and silently skipped if refused.
 
 ## 3. Customer flow and rules
