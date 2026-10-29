@@ -3,6 +3,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { useCallback, useEffect, useReducer, useRef, useState } from "react";
 import { useI18n } from "@/lib/i18n/context";
+import { KIOSK_DEFAULT_LOCALE } from "@/lib/i18n/locales";
 import { formatCurrency } from "@/lib/format";
 import { KioskApiError, kioskApi } from "@/lib/kiosk-api";
 import { toOrderItems } from "@/lib/kiosk-basket";
@@ -96,7 +97,7 @@ export function KioskApp({ token }: { token: string }) {
     dispatch({ type: "RESET" });
     setIdleWarn(null);
     setConfirmCancel(false);
-    setLocale("es");
+    setLocale(KIOSK_DEFAULT_LOCALE);
     void menuQuery.refetch();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [setLocale]);

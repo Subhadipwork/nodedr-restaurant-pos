@@ -12,6 +12,11 @@ export const LOCALE_LABELS: Record<Locale, string> = {
 
 export const DEFAULT_LOCALE: Locale = "en";
 
+// The customer kiosk starts in this language and returns to it after every
+// customer. Kept here (not in a "use client" file) so the server-side kiosk
+// manifest can read it too.
+export const KIOSK_DEFAULT_LOCALE: Locale = "en";
+
 export function isLocale(value: string | null | undefined): value is Locale {
   return !!value && (LOCALES as readonly string[]).includes(value);
 }

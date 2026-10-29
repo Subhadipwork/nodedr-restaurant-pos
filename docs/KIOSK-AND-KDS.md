@@ -31,10 +31,10 @@ station chips, (b) realtime now always connects through the web origin (see §6)
    invalidates the old one immediately; **Turn kiosk off** removes it.
 2. On the kiosk (Android 14, Chrome): open that address → ⋮ menu → **Add to Home screen / Install app**.
    The generated manifest (`/kiosk/<token>/manifest.webmanifest`) opens that exact kiosk
-   full-screen, landscape, in Spanish.
+   full-screen, landscape, in English.
 3. Use the **HTTPS** address. Service worker, install, and screen wake lock only exist in a
    secure context; over plain `http://192.168.x.x` the kiosk still works but without those.
-4. Languages: Spanish by default after every customer; EN toggle in the header. The choice never
+4. Languages: English by default after every customer; ES toggle in the header. The choice never
    persists and never touches the staff UI's saved language.
 
 ### Keeping the kiosk locked down and awake (separate from this code)
