@@ -16,6 +16,13 @@ import { Label } from "@/components/ui/label";
 import { useLogin } from "@/hooks/use-auth";
 import { ApiError } from "@/lib/api";
 
+// Public demo deployment (demo.restrovia.shop): show the shared demo login on
+// the sign-in page. On by default in this branch; set NEXT_PUBLIC_DEMO_MODE=false
+// to hide it. These are the seeded demo credentials (apps/backend/prisma/seed.ts).
+const DEMO_MODE = process.env.NEXT_PUBLIC_DEMO_MODE !== "false";
+const DEMO_EMAIL = "owner@demo.local";
+const DEMO_PASSWORD = "Password123!";
+
 export default function LoginPage() {
   const router = useRouter();
   const login = useLogin();
@@ -27,6 +34,7 @@ export default function LoginPage() {
   const {
     register,
     handleSubmit,
+    setValue,
     formState: { errors },
   } = useForm<LoginDto>({ resolver: zodResolver(loginSchema) });
 
@@ -71,6 +79,33 @@ export default function LoginPage() {
           </h1>
           <p className="text-sm text-muted-foreground">Sign in to manage your restaurant</p>
         </div>
+
+        {DEMO_MODE && (
+          <div className="mb-6 rounded-lg border border-primary/30 bg-primary/5 p-4 text-sm">
+            <p className="font-medium text-foreground">Demo account</p>
+            <p className="mt-0.5 text-xs text-muted-foreground">
+              Explore Restrovia with sample data. Use these details to sign in.
+            </p>
+            <dl className="mt-3 grid grid-cols-[auto_1fr] gap-x-3 gap-y-1 text-xs">
+              <dt className="text-muted-foreground">Email</dt>
+              <dd className="font-mono text-foreground select-all">{DEMO_EMAIL}</dd>
+              <dt className="text-muted-foreground">Password</dt>
+              <dd className="font-mono text-foreground select-all">{DEMO_PASSWORD}</dd>
+            </dl>
+            <Button
+              type="button"
+              variant="outline"
+              size="sm"
+              className="mt-3 w-full"
+              onClick={() => {
+                setValue("email", DEMO_EMAIL);
+                setValue("password", DEMO_PASSWORD);
+              }}
+            >
+              Fill demo login
+            </Button>
+          </div>
+        )}
 
         <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-5">
           <div className="flex flex-col gap-2">
