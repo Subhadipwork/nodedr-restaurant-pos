@@ -144,10 +144,15 @@ export default function LoginPage() {
         </form>
 
         <p className="mt-8 text-center text-xs text-muted-foreground">
-          New restaurant?{" "}
-          <Link href="/signup" className="font-medium text-foreground hover:underline">
-            Create an account
-          </Link>
+          Need an account?{" "}
+          <a
+            href="https://restrovia.shop/contact"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="font-medium text-foreground hover:underline"
+          >
+            Contact us
+          </a>
         </p>
       </motion.div>
     </main>
