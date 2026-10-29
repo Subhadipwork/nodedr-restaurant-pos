@@ -1,57 +1,19 @@
 "use client";
 
-import { MotionConfig } from "motion/react";
-import "./landing.css";
-import { AuthRedirectGate } from "@/components/marketing/auth-redirect-gate";
-import { ClaimedLanding } from "@/components/marketing/claimed-landing";
-import { Features } from "@/components/marketing/features";
-import { Hero } from "@/components/marketing/hero";
-import { InstallSection } from "@/components/marketing/install-section";
-import { MarketingFooter } from "@/components/marketing/marketing-footer";
-import { MarketingNav } from "@/components/marketing/marketing-nav";
-import { ProductShowcase } from "@/components/marketing/product-showcase";
-import { SecuritySection } from "@/components/marketing/security-section";
-import { useSetupStatus } from "@/hooks/use-setup-status";
+import { useRouter } from "next/navigation";
+import { useEffect } from "react";
+import { useCurrentUser } from "@/hooks/use-auth";
 
-export default function MarketingHomePage() {
-  const { data, isLoading } = useSetupStatus();
+// The marketing site is a separate project (restrovia-landing). Here "/" just
+// sends visitors to the right place: dashboard when signed in, login otherwise.
+export default function RootPage() {
+  const router = useRouter();
+  const { data, isLoading, isError } = useCurrentUser();
 
-  // Until we know: render nothing rather than flash the full sales pitch
-  // (or the minimal claimed view) and then swap it a moment later.
-  if (isLoading) {
-    return null;
-  }
+  useEffect(() => {
+    if (isLoading) return;
+    router.replace(!isError && data?.user ? "/dashboard" : "/login");
+  }, [isLoading, isError, data, router]);
 
-  // This instance already has a restaurant registered — the public root is
-  // now a live business's front door, not an unclaimed install's sales
-  // page. Show only what a returning visitor actually needs.
-  if (data?.isSetup) {
-    return (
-      <div className="lp flex min-h-full flex-col">
-        <AuthRedirectGate />
-        <ClaimedLanding />
-      </div>
-    );
-  }
-
-  return (
-    // reducedMotion="user" makes every Motion animation on this page defer
-    // to the OS prefers-reduced-motion setting automatically (transforms
-    // swap for instant/opacity-only changes) instead of threading
-    // useReducedMotion() through every component individually.
-    <MotionConfig reducedMotion="user">
-      <div className="lp flex min-h-full flex-col">
-        <AuthRedirectGate />
-        <MarketingNav />
-        <main id="main-content">
-          <Hero />
-          <ProductShowcase />
-          <Features />
-          <SecuritySection />
-          <InstallSection />
-        </main>
-        <MarketingFooter />
-      </div>
-    </MotionConfig>
-  );
+  return null;
 }
