@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useEffect, useRef } from "react";
 import { hasPermission, useCurrentUser } from "@/hooks/use-auth";
 import { useNavBadges } from "@/hooks/use-nav-badges";
 import { useBranch } from "@/hooks/use-branch";
@@ -40,6 +41,14 @@ export function SettingsTabs() {
   const { branchId } = useBranch();
   const branchCountry = useSettings(branchId).data?.branch.country;
 
+  // On a phone the tab row scrolls sideways; keep the current tab in view.
+  const navRef = useRef<HTMLElement>(null);
+  useEffect(() => {
+    navRef.current
+      ?.querySelector('[aria-current="page"]')
+      ?.scrollIntoView({ inline: "center", block: "nearest" });
+  }, [pathname]);
+
   const visibleTabs = TABS.filter(
     (tab) =>
       (!tab.permission || hasPermission(user, tab.permission)) &&
@@ -47,7 +56,11 @@ export function SettingsTabs() {
   );
 
   return (
-    <nav className="flex gap-1 border-b border-border">
+    <nav
+      ref={navRef}
+      aria-label="Settings sections"
+      className="flex gap-1 overflow-x-auto border-b border-border [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+    >
       {visibleTabs.map((tab) => {
         const isActive =
           tab.href === "/settings" ? pathname === "/settings" : pathname?.startsWith(tab.href);
@@ -55,8 +68,9 @@ export function SettingsTabs() {
           <Link
             key={tab.href}
             href={tab.href}
+            aria-current={isActive ? "page" : undefined}
             className={cn(
-              "flex items-center gap-2 border-b-2 px-3 pb-3 text-sm font-medium transition-colors",
+              "flex shrink-0 items-center gap-2 whitespace-nowrap border-b-2 px-3 pb-3 text-sm font-medium transition-colors",
               isActive
                 ? "border-primary text-foreground"
                 : "border-transparent text-muted-foreground hover:text-foreground",
