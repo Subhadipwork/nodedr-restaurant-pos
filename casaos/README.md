@@ -1,6 +1,6 @@
 # Restrovia on CasaOS / ZimaOS
 
-This directory holds the app store manifest and assets that let Nodedr
+This directory holds the app store manifest and assets that let
 Restrovia install as a one-click app on [CasaOS](https://casaos.io) and
 [ZimaOS](https://zimaspace.com) (ZimaOS uses the identical `x-casaos`
 compose schema).

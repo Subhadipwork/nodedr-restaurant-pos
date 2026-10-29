@@ -55,7 +55,7 @@
     <SelfContained>true</SelfContained>
 
     <Version>1.0.4.0</Version>
-    <Product>Nodedr OrderRestro</Product>
+    <Product>Restrovia</Product>
     <Company>Restrovia</Company>
     <Copyright>Copyright © Restrovia</Copyright>
   </PropertyGroup>
