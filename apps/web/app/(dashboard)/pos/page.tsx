@@ -15,6 +15,7 @@ import { ModifierPickerDialog } from "@/components/pos/modifier-picker-dialog";
 import { PosTablePicker } from "@/components/pos/pos-table-picker";
 import { ProductGrid } from "@/components/pos/product-grid";
 import { Card } from "@/components/ui/card";
+import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useBranch } from "@/hooks/use-branch";
 import type { MenuItem } from "@/hooks/use-menu";
 import {
@@ -269,6 +270,30 @@ function PosPageInner() {
       </div>
 
       <BranchNotice />
+
+      {/* The order-type switch otherwise only lives in the cart panel, which
+          isn't shown on the table picker (and is hidden on phones until an item
+          is added) — so Takeaway/Delivery were unreachable. On wide screens the
+          cart panel already carries it, so only show this one there on the picker. */}
+      {!activeOrder && (
+        <Tabs
+          value={orderType}
+          onValueChange={(v) => setOrderType(v as PosOrderType)}
+          className={cn(!showTablePicker && "lg:hidden")}
+        >
+          <TabsList className="w-full sm:w-auto">
+            <TabsTrigger value="DINE_IN" className="flex-1 sm:flex-none">
+              Dine-in
+            </TabsTrigger>
+            <TabsTrigger value="TAKEAWAY" className="flex-1 sm:flex-none">
+              Takeaway
+            </TabsTrigger>
+            <TabsTrigger value="DELIVERY" className="flex-1 sm:flex-none">
+              Delivery
+            </TabsTrigger>
+          </TabsList>
+        </Tabs>
+      )}
 
       {showTablePicker ? (
         <Card className="flex-1 overflow-hidden p-5">
