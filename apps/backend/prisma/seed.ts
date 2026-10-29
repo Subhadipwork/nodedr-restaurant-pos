@@ -43,7 +43,7 @@ async function main() {
   console.log('Creating demo restaurant + branch...');
   const restaurant = await prisma.restaurant.upsert({
     where: { id: 'demo-restaurant' },
-    update: {},
+    update: { name: 'Restrovia Bistro (Demo)' },
     create: {
       id: 'demo-restaurant',
       name: 'Restrovia Bistro (Demo)',
