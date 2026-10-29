@@ -6,6 +6,7 @@ import { useLowStockIngredients } from "@/hooks/use-inventory";
 import { useNotifications } from "@/hooks/use-notifications";
 import { useBackups } from "@/hooks/use-backups";
 import { useUpdateCheck } from "@/hooks/use-updates";
+import { DEMO_MODE } from "@/lib/demo";
 
 // Which sidebar sections and Settings tabs have something that needs the
 // user's attention. Everything here reuses queries the app already runs
@@ -29,7 +30,7 @@ export function useNavBadges(): NavBadges {
   const { data: me } = useCurrentUser();
   const user = me?.user;
 
-  const canUpdate = hasPermission(user, "system.update");
+  const canUpdate = !DEMO_MODE && hasPermission(user, "system.update");
   const canBackup = hasPermission(user, "backup.manage");
   const canInventory = hasPermission(user, "inventory.manage");
 

@@ -1,6 +1,7 @@
 import {
   BadRequestException,
   ConflictException,
+  ForbiddenException,
   Injectable,
   InternalServerErrorException,
   Logger,
@@ -85,6 +86,10 @@ export class UpdateService {
   // tag of the two app containers it is told to manage. It answers 202 right
   // away and carries on in the background (restarting this very container).
   async applyUpdate(): Promise<{ status: string; message: string }> {
+    // The public demo shares one login; never let a visitor restart it.
+    if (process.env.DEMO_MODE !== 'false') {
+      throw new ForbiddenException('Updates are disabled on the demo.');
+    }
     const base = (process.env.UPDATER_URL ?? '').trim().replace(/\/$/, '');
     if (!base) {
       throw new BadRequestException(

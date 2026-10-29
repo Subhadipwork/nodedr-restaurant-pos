@@ -1,7 +1,9 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 import { toast } from "sonner";
+import { DEMO_MODE } from "@/lib/demo";
 import { NavDot } from "@/components/layout/nav-dot";
 import { SettingsTabs } from "@/components/settings/settings-tabs";
 import { Badge } from "@/components/ui/badge";
@@ -75,10 +77,17 @@ function pollUntilBackUp(onFailed: () => void) {
 }
 
 export default function UpdatesPage() {
-  const { data, isLoading, refetch, isFetching } = useUpdateCheck();
+  const router = useRouter();
+  const { data, isLoading, refetch, isFetching } = useUpdateCheck(!DEMO_MODE);
   const applyUpdate = useApplyUpdate();
   const [confirmOpen, setConfirmOpen] = useState(false);
   const [applying, setApplying] = useState(false);
+
+  // The public demo has no updater; send anyone who types the URL back to General.
+  useEffect(() => {
+    if (DEMO_MODE) router.replace("/settings");
+  }, [router]);
+  if (DEMO_MODE) return null;
 
   const handleUpdate = () => {
     setConfirmOpen(false);

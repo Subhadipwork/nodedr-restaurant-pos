@@ -15,11 +15,9 @@ import { PasswordInput } from "@/components/ui/password-input";
 import { Label } from "@/components/ui/label";
 import { useLogin } from "@/hooks/use-auth";
 import { ApiError } from "@/lib/api";
+import { DEMO_MODE } from "@/lib/demo";
 
-// Public demo deployment (demo.restrovia.shop): show the shared demo login on
-// the sign-in page. On by default in this branch; set NEXT_PUBLIC_DEMO_MODE=false
-// to hide it. These are the seeded demo credentials (apps/backend/prisma/seed.ts).
-const DEMO_MODE = process.env.NEXT_PUBLIC_DEMO_MODE !== "false";
+// The seeded demo credentials (apps/backend/prisma/seed.ts).
 const DEMO_EMAIL = "owner@demo.local";
 const DEMO_PASSWORD = "Password123!";
 

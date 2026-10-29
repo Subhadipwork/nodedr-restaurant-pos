@@ -6,6 +6,7 @@ import { hasPermission, useCurrentUser } from "@/hooks/use-auth";
 import { useNavBadges } from "@/hooks/use-nav-badges";
 import { useBranch } from "@/hooks/use-branch";
 import { useSettings } from "@/hooks/use-settings";
+import { DEMO_MODE } from "@/lib/demo";
 import { cn } from "@/lib/utils";
 import { NavDot } from "@/components/layout/nav-dot";
 
@@ -16,6 +17,8 @@ interface SettingsTab {
   permission?: string;
   /** Only shown for branches in this country (ISO code). */
   country?: string;
+  /** Hidden on the public demo deployment. */
+  hideInDemo?: boolean;
 }
 
 const TABS: SettingsTab[] = [
@@ -24,7 +27,7 @@ const TABS: SettingsTab[] = [
   { label: "Roles", href: "/settings/roles", permission: "roles.manage" },
   { label: "Audit Log", href: "/settings/audit-log", permission: "audit_log.view" },
   { label: "Backup", href: "/settings/backup", permission: "backup.manage" },
-  { label: "Updates", href: "/settings/updates", permission: "system.update" },
+  { label: "Updates", href: "/settings/updates", permission: "system.update", hideInDemo: true },
   { label: "Server Sync", href: "/settings/sync", permission: "settings.manage" },
   { label: "API Keys", href: "/settings/api-keys" },
   { label: "Security", href: "/settings/security" },
@@ -42,6 +45,7 @@ export function SettingsTabs() {
 
   const visibleTabs = TABS.filter(
     (tab) =>
+      !(DEMO_MODE && tab.hideInDemo) &&
       (!tab.permission || hasPermission(user, tab.permission)) &&
       (!tab.country || branchCountry === tab.country),
   );
